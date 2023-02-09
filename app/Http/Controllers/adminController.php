@@ -13,7 +13,9 @@ use MongoDB\Driver\Session;
 class adminController extends Controller
 {
 
-    // this is test first comment
+    // this is constructor function
+    // where we defined auth middleware so it's functions will not
+    // available with out of authenticating a user
     public function __construct()
     {
         $this->middleware('auth');
