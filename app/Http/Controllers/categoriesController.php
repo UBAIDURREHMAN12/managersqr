@@ -16,14 +16,14 @@ class categoriesController extends Controller
      */
     public function index()
     {
-       $data=category::where('user_id',Auth::user()->id)->get();
+       $data=Category::where('user_id',Auth::user()->id)->get();
        return view('Categories.index',compact('data'));
     }
 
 
     public function EditCat($id){
 
-        $data = category::findOrFail($id);
+        $data = Category::findOrFail($id);
         return response()->json(['data' => $data]);
 
     }
@@ -74,7 +74,7 @@ class categoriesController extends Controller
      */
     public function edit($id)
     {
-          $category = category::where('id',$id)->first();
+          $category = Category::where('id',$id)->first();
 
           return view('Categories.edit',compact('category'));
     }

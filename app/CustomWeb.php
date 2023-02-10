@@ -13,6 +13,12 @@ class CustomWeb extends Model
      * @var array
      */
      public $table = 'custom_web';
+
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
      protected $fillable = [
         'title',
          'user_id',

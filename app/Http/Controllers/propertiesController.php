@@ -225,6 +225,7 @@ class propertiesController extends Controller
 
     public function store(Request $request)
     {
+
         $request->validate([
             'title'    =>  'required|regex:/^[a-zA-Z0-9 ]+$/|max:255',
             'location' =>  'required|regex:/^[a-zA-Z0-9 ]+$/|max:255'
@@ -259,8 +260,6 @@ class propertiesController extends Controller
 
             ]);
         }
-
-
 
 
         $input=$request->all();

@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class UserSubscription extends Model
 {
-     protected  $fillable=['name','user_id'];
+    public $table = 'user_subscriptions';
 
     public function users()
     {

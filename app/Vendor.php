@@ -11,6 +11,12 @@ class Vendor extends Authenticatable
 
      protected $guard="vendor";
      protected $table="vendors";
+
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
     protected $fillable = [
         'name', 'email', 'address','category','user_id','report_id','vendor_id','password'
     ];

@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\TempLogo;
+use App\Category;
+use App\User;
+use App\CustomQrCode;
+use App\property;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -25,6 +29,14 @@ class qrcodeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
+    }
+
+
+    public function testRelations(Request $request){
+
+        $data = CustomQrCode::with('properties')->get();
+        dd($data);
 
     }
 
@@ -233,10 +245,6 @@ class qrcodeController extends Controller
     }
     function createProperty(request $request){
 
-
-
-
-
         $property = DB::table('properties')->where('id',$request->property)->first();
 
         if($property->floors>0) {
@@ -257,12 +265,6 @@ class qrcodeController extends Controller
             if($qrcodeData>0){
                 DB::table('qrocde_info')->where('property_id', $property->id)->delete();
             }
-
-
-
-
-
-
 
 
                 for ($i = 1; $i <= $property->floors; $i++) {

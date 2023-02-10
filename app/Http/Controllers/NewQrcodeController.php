@@ -106,20 +106,6 @@ class NewQrcodeController extends Controller
 
         $answers = SurveyAnswer::where('question_form_iu_d', $form_id)->get();
 
-//        for($i=0; $i<count($answers); $i++){
-//            if($i>0){
-//                if($answers[$i]->u_id != $answers[$i-1]->u_id){
-//                    echo "<br> ---------------------------- <br> ";
-//                }
-//            }
-//
-//             echo SurveyQuestion::where('id', $answers[$i]->question_id)->pluck('question')->first();
-//            echo '<br>';
-//            echo $answers[$i]->answer;
-//            echo '<br>';
-//
-//        }
-
      return view('feedback_report', compact('answers'));
 
     }
@@ -262,10 +248,9 @@ class NewQrcodeController extends Controller
 
         $request->validate([
             'company_name_or_title'    =>  'required|unique:custom_web,company_name_or_title',
-            'fb_link'    =>  'email',
+            'fb_link'    =>  'required',
         ]);
 
-        dd();
 
         $CustomWeb = $request->all();
         $CustomWeb['user_id'] =  Auth::user()->id;
