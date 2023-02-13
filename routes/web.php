@@ -26,7 +26,9 @@ Route::get('/updateTemplate/{id}','qrcodeController@updateTemplate');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+// this route will returns the custom qr code list
 Route::get('/load/view','NewQrcodeController@LoadView')->name('list.loadview');
+// this route accepts form id an returns feedback page
 Route::get('/get/feedbacks/{form_id}','NewQrcodeController@GetFeedbacks')->name('get_feedbacks');
 Route::get('/load/web/view','NewQrcodeController@LoadView2');
 
