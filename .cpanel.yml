@@ -1,0 +1,4 @@
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/manager1/testmanagersqr/
+    - /bin/cp -R * $DEPLOYPATH
