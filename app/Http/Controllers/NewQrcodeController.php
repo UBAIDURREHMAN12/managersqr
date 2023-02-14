@@ -1133,6 +1133,7 @@ class NewQrcodeController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    // following functions updates qr code
     public function updateQr(Request $request, $id)
     {
 
@@ -1172,6 +1173,9 @@ class NewQrcodeController extends Controller
     }
 
 
+    // following function takes logo from session and
+    // save it in qr code settings and generate qr code
+    // accordingly
     function createQrcode()
     {
 
@@ -1206,6 +1210,9 @@ class NewQrcodeController extends Controller
         return view('properties.qrCode2');
     }
 
+    // following function takes logo from session and
+    // save it in qr code settings and generate qr code
+    // for custom address, and links ans questions survy form etc.
     function createQrcode2()
     {
 
@@ -1247,6 +1254,7 @@ class NewQrcodeController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    // following function updates qrcode and save it in database
     public function downloadupdatedqr(request $request, $id)
     {
 
