@@ -18,4 +18,13 @@ class FeedbackType extends Model
         return $this->hasMany(FeedbackSendHistory::class, 'feedback_id', 'id');
     }
 
+    public function feedbackImages()
+    {
+        return $this->hasMany(FeedbackImage::class, 'feedback_id', 'id');
+    }
+
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class, 'feedback_id', 'id');
+    }
 }

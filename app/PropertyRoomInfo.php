@@ -15,4 +15,9 @@ class PropertyRoomInfo extends Model
         return $this->belongsTo(Property::class, 'property_id', 'id');
     }
 
+    public function orders()
+    {
+        return $this->hasMany(order::class, 'room_id', 'id');
+    }
+
 }

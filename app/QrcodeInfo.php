@@ -20,4 +20,9 @@ class QrcodeInfo extends Model
         return $this->hasMany(CustomWeb::class, 'qr_id', 'id');
     }
 
+    public function orders()
+    {
+        return $this->hasMany(Order::class, 'qrCode_id', 'id');
+    }
+
 }

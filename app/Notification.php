@@ -18,6 +18,9 @@ class Notification extends Model
     {
         return $this->belongsTo(User::class, 'org_id', 'id');
     }
-
+    public function feedbacks()
+    {
+        return $this->belongsTo(FeedbackType::class, 'feedback_id', 'id');
+    }
 
 }
