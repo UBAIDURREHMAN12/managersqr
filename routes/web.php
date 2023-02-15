@@ -177,6 +177,8 @@ Route::get('user_subscription', 'PaymentController@user_subscription');
 Route::get('user_subscription_login', 'PaymentController@user_subscription_login');
 Route::get('subscribe', 'PaymentController@subscribe');
 Route::get('subscription-payment', 'PaymentController@subscriptions');
+///////////////////////////////////////////////// /////////////////////////////////////////// ////////////////////////////////////////////////////////
+// by using following group of routes admin can manage different activites like feedback,usertype etc and can alos update key for feedback
 Route::get('manageUsertype', 'adminController@manageWelcomPage');
 Route::post('addFeedbackType', 'adminController@addFeedbackType');
 Route::get('manageUsertype', 'adminController@manageWelcomPage');

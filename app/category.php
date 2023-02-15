@@ -16,6 +16,6 @@ class Category extends Model
 
     public function orders()
     {
-        return $this->hasMany(Order::class, 'order', 'id');
+        return $this->hasMany(order::class, 'order', 'id');
     }
 }
