@@ -542,13 +542,12 @@ class propertiesController extends Controller
 
     }
 
+    // followgin function generates qr code for plain text or for address or for weblink etc as per input from request
+    // page reference (http://managersqr.managershq.com.au/createQrcode)
+    //also html code is generating from this function as well
     function  generateQrcode($qrcode,$url,$path){
 
-
-
         $mpdf = new \Mpdf\Mpdf();
-
-
 
         if(file_exists(public_path('/qrcode123.png'))){
 
@@ -557,8 +556,6 @@ class propertiesController extends Controller
         }
 
         $input=$qrcode;
-
-
 
 
         $qrCode = new QrCode($url);
@@ -1020,6 +1017,8 @@ class propertiesController extends Controller
     }
 
 
+    //this function accepts property id in request body and return related data for fillable form
+    // from where we can edit property rooms
     function getEditRooms(Request $request){
         $floor = DB::table('properties')->where('id', '=', $request->id)->first();
         $rooms = DB::table('property_room_info')->where('property_id', '=', $request->id)->get();
@@ -1794,6 +1793,10 @@ class propertiesController extends Controller
 
     }
 
+    // following function shows feedback to admin with property name feedback type and note
+    // page reference is (http://managersqr.managershq.com.au/feedback/Guest/open)
+
+    // following $user in function parameter is a role that can be manger or guest etc
     function feedbacksBytype($user){
 
         if(session()->get('property') == 0)
@@ -1841,6 +1844,8 @@ class propertiesController extends Controller
     }
 
 
+    // following function accepts property key in request which is property_id and returns
+    // related area or apartment information as per request like information related to apartment etc
     function getpropertyareainfo(Request $request){
 
         if($request->type=='area'){

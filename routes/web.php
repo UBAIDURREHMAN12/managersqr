@@ -85,6 +85,8 @@ Route::post('/categories/destroy', 'categoriesController@destroy');
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 Route::get('/form/{id}', 'orderController@index');
 Route::post('/submitForm', 'orderController@submitForm');
+
+//following route was use in very early version of this system now it is not in use
 Route::get('/feedbacks', 'pdashboardropertiesController@feedbacks');
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// logout route
@@ -112,7 +114,7 @@ route::get('/response', function () {
 
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// following is a route for just image download purpose
+// routes for just test purpose
 Route::get('/downloadImage', function () {
 
     $qrcode = new Generator;
@@ -123,6 +125,8 @@ Route::get('/downloadImage', function () {
         ->generate('A simple example of QR code!');;
     return response($qrcode)->header('Content-type','image/png');
 });
+// route for jsut test purpose (not used in real application)
+Route::post('/test444','qrcodeController@store333')->name('ajax-crud.store');
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Route::post('/getEditRooms', 'propertiesController@getEditRooms');
 
@@ -134,7 +138,8 @@ Route::get('/listqrcodes','NewQrcodeController@listqrcodes')->name('list.qrcodes
 Route::get('/manageQrcode','propertiesController@index');
 
 Route::post('/generateQrcode','qrcodeController@store');
-Route::post('/test444','qrcodeController@store333')->name('ajax-crud.store');
+///////////////////////////////////////////////////////////////////////////////////////
+
 Route::post('/generateQr','qrcodeController@generateQr');
 Route::post('/fileuploader','qrcodeController@fileuploader');
 Route::post('/fileuploaderlogo','qrcodeController@fileuploaderlogo');

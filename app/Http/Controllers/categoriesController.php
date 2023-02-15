@@ -14,7 +14,7 @@ class categoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    // resouce function to show list of categories page
+    // resouce function to show list of categories page (http://managersqr.managershq.com.au/categories)
     public function index()
     {
        $data=Category::where('user_id',Auth::user()->id)->get();
@@ -22,6 +22,7 @@ class categoriesController extends Controller
     }
 
 
+    //following function returns category data for fillable form from where we can update category
     public function EditCat($id){
 
         $data = Category::findOrFail($id);
@@ -33,6 +34,7 @@ class categoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // followign function loads category creation page ()
     public function create()
     {
           return view('Categories.create');

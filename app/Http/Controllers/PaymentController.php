@@ -36,6 +36,10 @@ class PaymentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    // following function is use to detuct payment from user account also if payment successfully detucted
+    // then get user's related data from sessions and save into users table and user subscription table as
+    // per requirement
     public function stripePost(Request $request)
     {
 
@@ -187,7 +191,6 @@ class PaymentController extends Controller
 
     public function attach_customer($payment,$customer){
 
-
         $stripe = new \Stripe\StripeClient(
             env('STRIPE_SECRET')
         );
@@ -202,6 +205,8 @@ class PaymentController extends Controller
         }
     }
 
+    // following function also communicate with stripe to cancel subscription
+    // and if it throws an exception it returns exception
     function cancelSubscription(){
         $sub = db::table('user_subscriptions')->where('user_id', Auth::user()->id)->first();
 
@@ -799,6 +804,8 @@ class PaymentController extends Controller
     }
 
 
+    // this function communicates with stripe to get activation status against user who is purchasing plan
+    // if status is active then save data into "card_details" table otherwise return exception
     function stripePayment(request $request){
         $user=User::where('id',session()->get('user_id'))->first();
 

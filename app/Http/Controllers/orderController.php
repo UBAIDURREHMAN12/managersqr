@@ -18,9 +18,6 @@ use Illuminate\Support\Facades\Session;
 class orderController extends Controller
 {
 
-
-
-
     // following function is use to return a page  where we can get feedback against a property or apartment etc
     // this function get all of required data from database which we need to compact to html view and render form view
       public  function index($id){
@@ -172,6 +169,9 @@ class orderController extends Controller
       }
 
 
+      // as of page reference (http://managersqr.managershq.com.au/feedback/Guest/open) where Guest is a user and open is a type of feedback.
+    // by opening the url .. . on this page form action select send feedback option so at the backend of this button
+    // following function calls and send emails with related data to the owner of the system about the feedback
       function sendReport(request $request){
 
           $input=$request->all();

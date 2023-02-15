@@ -87,23 +87,14 @@ class qrcodeController extends Controller
         return view('properties.qrCode',compact('id','qrcodeData'));
     }
 
-
+//  // followgin function generates qr code for plain text or for address or for weblink etc as per input from request
+//    // page reference (http://managersqr.managershq.com.au/createQrcode)
+//    //also html code is generating from this function as well
     function generateQr(Request $request){
 
-//        $input = $request->all();
-//dd($input['form4'][0]);
-//
-////        if($input['form4'][0]->hasFile()){
-////echo "file found";
-////        }else{
-////            echo "file not found";
-////        }
-//        dd();
 
         if(file_exists(public_path('/qrcode123.png'))){
-
             unlink(public_path('/qrcode123.png'));
-
         }
 
         $input=$request->all();
@@ -223,25 +214,21 @@ class qrcodeController extends Controller
 
 
     function setupContent(Request $request){
-
-
-
-
     }
 
 
 
+    // this function accepts qrcode size and format and returns property create page
+    // because we need to integrate this qrcode with property which is being created
     function downloadQrcode(request $request){
-
-//        dd($request->all());
-
            session()->put('qrCodesize',$request->size);
            session()->put('qrformat',$request->qrformat);
-
-
            return redirect('/properties/create');
-
     }
+
+    // following function accepts property id in request body in get it's related data from database and
+    // create zip file that contains  it's floors and rooms related qrcodes also save related data into
+    // qrocde_info table
     function createProperty(request $request){
 
         $property = DB::table('properties')->where('id',$request->property)->first();
@@ -264,7 +251,6 @@ class qrcodeController extends Controller
             if($qrcodeData>0){
                 DB::table('qrocde_info')->where('property_id', $property->id)->delete();
             }
-
 
                 for ($i = 1; $i <= $property->floors; $i++) {
                     $roomsData = DB::table('property_room_info')->where([['property_id', $property->id], ['floorNo', $i]])->first();
@@ -608,8 +594,8 @@ class qrcodeController extends Controller
 
 
 
+    //following function accepts logo image and save it on server and returns image url as logo url
     function fileuploader(request $request){
-
 
    try{
        if($request->session()->has('logo')){
@@ -637,6 +623,9 @@ class qrcodeController extends Controller
 
 //        return  json_encode(['success'=>true]);
     }
+
+    //following function accepts company logo image and save it on server
+    // and save logo url in session for further use and also return url
     function fileuploaderlogo(request $request){
 
 
@@ -662,8 +651,8 @@ class qrcodeController extends Controller
     }
 
 
+    // following function is also use to create qrcode and link logo inside that qrcode
     function createQrcode(){
-
 
         if(Session::has('logo')){
 

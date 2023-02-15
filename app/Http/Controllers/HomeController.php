@@ -22,6 +22,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    // simply return home page to ensure an user that he/she is successfully logged in
     public function index()
     {
         return view('home');
