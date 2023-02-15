@@ -62,13 +62,14 @@ Route::get('/delete/images/{id}','NewQrcodeController@deletegallery_images')->na
 // routes to load dashboard pages for admin panel after login
 Route::get('/dashboard','adminController@index')->name('dashboard');
 
+// following routes are for creating, reading, updating,and deleting a vendor
 Route::get('/vendors','vendorsController@index')->name('vendors');
 Route::get('/vendors/create', 'vendorsController@create');
 Route::post('/vendors/store', 'vendorsController@store');
 Route::post('/vendors/destroy', 'vendorsController@destroy');
 Route::post('/vendors/update', 'vendorsController@update');
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// rotues related to property feedbacks
+// rotues related to property feedbacks for property crud operations
 Route::post('/properties/update', 'propertiesController@update');
 Route::post('/properties/propertyUpdate', 'propertiesController@propertyUpdate');
 Route::post('/properties/destroy', 'propertiesController@destroy');
@@ -77,17 +78,20 @@ Route::post('/feedbacks/delete', 'propertiesController@deleteFeddback');
 
 // this route takes property id in url parameter and get logo details against it and save in sessions
 Route::get('/generateQrCode/{id}','qrcodeController@index');
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// following functions are use to update and delete category respectively
 Route::post('/categories/update', 'categoriesController@update');
 Route::post('/categories/destroy', 'categoriesController@destroy');
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////
 Route::get('/form/{id}', 'orderController@index');
 Route::post('/submitForm', 'orderController@submitForm');
 Route::get('/feedbacks', 'pdashboardropertiesController@feedbacks');
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// logout route
 Route::get('/user/logout', 'adminController@logout');
 
 
-// resoures routes with authentication for vendor , properties and categories
+// resource routes with authentication for vendor , properties and categories
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('vendors','vendorsController');
     Route::resource('properties','propertiesController');
@@ -102,7 +106,7 @@ Route::get('testencryption', 'propertiesController@testencryption');
 
 Route::get('/subscription', 'adminController@subscription');
 
-
+//this route is not in use
 route::get('/response', function () {
     return view('response');
 

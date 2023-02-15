@@ -41,10 +41,9 @@ class qrcodeController extends Controller
     }
 
 
+    // following function takes property id in url parameter
+    // and generate qr code against it
     public function index($id){
-
-
-
         $property = DB::table('properties')->where('id',$id)->first();
         $qrcodeData = DB::table('qrocde_info')->where('property_id', $property->id)->count();
 

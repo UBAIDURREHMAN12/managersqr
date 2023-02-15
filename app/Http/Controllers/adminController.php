@@ -20,6 +20,9 @@ class adminController extends Controller
     }
 
 
+    //this function loads first dashboard page with counters for feedbacks etc
+    // showing on dashboard and, recent activities list.
+    // page url  is (" http://managersqr.managershq.com.au/dashboard ")
     public  function index(){
 
         try{
@@ -115,6 +118,8 @@ class adminController extends Controller
     }
 
 
+        // logout a user from dashboard and remvoes values against all sessions
+    // and redirect to login page
         public function logout(Request $request) {
             auth('web')->logout();
             session()->flush();
@@ -122,6 +127,8 @@ class adminController extends Controller
         }
 
 
+        // following function returns (http://managersqr.managershq.com.au/subscription) page
+    // from where a user can view his subscription details
     public function subscription(){
         $subscription=db::table('user_subscriptions')->where('user_id',Auth::user()->id)->first();
         $card=db::table('card_details')->where('user_id',Auth::user()->id)->first();

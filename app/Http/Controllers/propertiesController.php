@@ -33,6 +33,11 @@ class propertiesController extends Controller
         $this->middleware('auth');
     }
 
+    // following function save logo to temporary logos table on the click of
+    // "Attach Logo" button page reference (http://managersqr.managershq.com.au/createQrcode)
+    // and when we press apply changes button at that time it takes logo from temporary table
+    // and attach it with property or with plain text etc and then after that we remove it from
+    // temporary table
     public function SaveLogo(Request $request){
 
         $image = $request->file('image');
@@ -64,6 +69,8 @@ class propertiesController extends Controller
     }
 
 
+    // following function convert origional url
+    // into a short form which is as per client request
     function vgdShorten($url,$shorturl = null)
     {
 
@@ -155,6 +162,7 @@ class propertiesController extends Controller
         return($result);
     }
 
+    //test function (not using in production)
     public function testencryption(Request $request){
 
 
@@ -191,11 +199,10 @@ class propertiesController extends Controller
 
     }
 
+    // this is resource function to load property page for logged in user
     public function index()
     {
         //load properties index page
-
-
 //        $data = property::where('user_id',Auth::user()->id)->get();
         $data = property::where('user_id',Auth::user()->id)->orderBy('id', 'DESC')->get();
 
@@ -207,6 +214,7 @@ class propertiesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // following function is use to ceate new property
     public function create(){
         //load user create properties view
         $user = DB::table('users')->where('id', Auth::user()->id)->first();
@@ -222,7 +230,10 @@ class propertiesController extends Controller
      */
 
 
-
+   // resource function use to create property also save data in rooms and apartments table
+    // related to new property which is being created also related data of particular user
+    // who is creating property also save data in qrcode table which is related to new property
+    // which is being created
     public function store(Request $request)
     {
 
@@ -530,6 +541,7 @@ class propertiesController extends Controller
 
 
     }
+
     function  generateQrcode($qrcode,$url,$path){
 
 
@@ -786,6 +798,8 @@ class propertiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // following is also a resource function use to edit property
+    // gets data from related tables for fillable form and render view
     public function edit($id)
     {
 
@@ -806,6 +820,8 @@ class propertiesController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    // following function is use to update property
+    // also updating room information against property and qr code if required
     public function propertyUpdate(Request $request)
     {
 
@@ -956,6 +972,9 @@ class propertiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    // following resouce function destroy is use to delete property
+    // with property related notifications , feedbacks and orders
     public function destroy(Request $request)
     {
 
@@ -1738,11 +1757,7 @@ class propertiesController extends Controller
 
 
     function deleteFeddback(request $Request){
-
-
-
         $delete= db::table('Orders')->where('id',$Request->id)->delete();
-
     }
 
 

@@ -21,32 +21,23 @@ class orderController extends Controller
 
 
 
+    // following function is use to return a page  where we can get feedback against a property or apartment etc
+    // this function get all of required data from database which we need to compact to html view and render form view
       public  function index($id){
           $qrCodeData=db::table('qrocde_info')->where('id',$id)->first();
-
-
 
           $property=db::table('properties')->where('id',$qrCodeData->property_id)->first();
           $categories=db::table('categories')->where('user_id',$property->user_id)->get();
           $feedbacks = db::table('feedback_type')->where('user_id',$property->user_id)->get();
-
 
           return view('form',compact('property','qrCodeData','categories','feedbacks'));
 
       }
 
 
+      // followiong function is use to take feedback against apartment etc
+    // and save into firebase data base and fire a notification to admin dashboard
       public function submitForm(request $request){
-
-
-
-        //  dd($request->all());
-
-
-
-//          $this->validate($request, [
-//              'g-recaptcha-response' => 'required|captcha',
-//          ]);
 
           $this->validate($request, [
               'order' => 'required',
@@ -61,8 +52,6 @@ class orderController extends Controller
               $password="";
           }
 
-
-
           //key validation
 
             if(isset($request->key)){
@@ -73,11 +62,9 @@ class orderController extends Controller
               }
             }
 
-
-
-
-
-
+            // following firebase is using to save notifications for example
+          // whenever we receives a notification against an apartment ect then
+          // we fired notification from database
           $firestore = app('firebase.firestore');
           $db = $firestore->database();
 

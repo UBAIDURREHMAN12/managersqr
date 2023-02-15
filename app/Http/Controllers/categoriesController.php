@@ -14,6 +14,7 @@ class categoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // resouce function to show list of categories page
     public function index()
     {
        $data=Category::where('user_id',Auth::user()->id)->get();
@@ -43,6 +44,7 @@ class categoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    // this is resource function to save category with user_id as logged in user (system purchaser or owner)
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -72,6 +74,7 @@ class categoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // this is resource function to get data for fillable form from where we can udpate category
     public function edit($id)
     {
           $category = Category::where('id',$id)->first();
@@ -86,6 +89,7 @@ class categoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // following function is use to update category name
     public function update(Request $request)
     {
 
@@ -104,6 +108,7 @@ class categoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // following function deletes category
     public function destroy(request $request)
     {
          db::table('categories')->where('id',$request->id)->delete();

@@ -72,9 +72,9 @@ class NewQrcodeController extends Controller
         return view('policies');
     }
 
+    // this function disply survey data the survey which is done through question and answers
     function FetchSurvey($id)
     {
-
         $data = CustomQrCode::find($id);
 
         return view('display_servey', compact('data'));
@@ -191,6 +191,7 @@ class NewQrcodeController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    // this function get media for custom web and then compact view
     public function gallery(Request $request, $id)
     {
 
@@ -205,6 +206,7 @@ class NewQrcodeController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    // this function deletes gallery iamges against gallery id
     public function deletegallery_images($id)
     {
 
@@ -1255,6 +1257,8 @@ class NewQrcodeController extends Controller
      */
 
     // following function updates qrcode and save it in database
+    // also save data in customqr table about qrcode type wheater it is
+    // plain text or a web link etc
     public function downloadupdatedqr(request $request, $id)
     {
 
@@ -1351,6 +1355,9 @@ class NewQrcodeController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    // following function zip folder as name of directory
+    // that contains qrcodes
+    // for all apartmetns and floors
     public function downloadsimpleqr(request $request, $id)
     {
 
@@ -1365,6 +1372,9 @@ class NewQrcodeController extends Controller
         return response()->download(public_path('/' . $fileName));
     }
 
+    // following function zip folder as name of directory
+    // that contains qrcodes
+    // for custom qr codes
     public function downloadsimpleqr2(request $request, $id)
     {
 
@@ -1396,6 +1406,8 @@ class NewQrcodeController extends Controller
     }
 
 
+    // this function loads question form using unique id this
+    // unique id attaches with question form at creation of question form
     public function FetchQuestionForm($id)
     {
 
@@ -1403,6 +1415,8 @@ class NewQrcodeController extends Controller
         return view('question_form', compact('data'));
     }
 
+    // following function takes answers against a survey form
+    // question and save into database
     public function SubmitAnswers(Request $request)
     {
 

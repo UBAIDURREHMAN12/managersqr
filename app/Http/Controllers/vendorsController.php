@@ -31,6 +31,8 @@ class VendorsController extends Controller
         $this->middleware('auth');
     }
 
+    //this function loads vendors list
+    // page url is (http://managersqr.managershq.com.au/vendors)
     public function index()
     {
         //load vendor index page
@@ -43,6 +45,7 @@ class VendorsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // following function returns a view form where we can create a vendor
     public function create(Request $request)
     {
 
@@ -62,6 +65,9 @@ class VendorsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    // following function is use to create a vendor
+    // also insert data in vendor_category table with required
+    // data like user_id is the id of owner (person who purshse this system) logged in person id
     public function store(Request $request)
     {
 
@@ -160,6 +166,8 @@ class VendorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    // this is resource function use to update vendor data
     public function update(Request $request)
     {
 
@@ -211,6 +219,8 @@ class VendorsController extends Controller
 
     }
 
+    // following function generates random password for a vendor and send him/her
+    // on mail which is used at vendor creation time
     function generatePassword(Request $request){
 
         //this is the generate password function which is now move to on creation
