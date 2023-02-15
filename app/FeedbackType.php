@@ -12,4 +12,10 @@ class FeedbackType extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
+    public function sendFeedbackHistory()
+    {
+        return $this->hasMany(FeedbackSendHistory::class, 'feedback_id', 'id');
+    }
+
 }

@@ -18,9 +18,14 @@ class Gallery extends Model
         'image'
      ];
 
+    public function customWeb()
+    {
+        return $this->belongsTo(CustomWeb::class, 'web_id', 'id');
+    }
+
    protected $hidden = [
          'created_at', 'updated_at'
     ];
-   
-    
+
+
 }

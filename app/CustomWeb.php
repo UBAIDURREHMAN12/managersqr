@@ -29,6 +29,11 @@ class CustomWeb extends Model
         return $this->belongsTo(QrcodeInfo::class, 'qr_id', 'id');
     }
 
+    public function galleries()
+    {
+        return $this->hasMany(Gallery::class, 'web_id', 'id');
+    }
+
      protected $fillable = [
         'title',
          'user_id',
