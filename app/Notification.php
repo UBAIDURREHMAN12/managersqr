@@ -14,6 +14,8 @@ class Notification extends Model
      */
     public $table = 'Notifications';
 
+    protected $fillable = ['message','org_id', 'feedback_id', 'type'];
+
     public function users()
     {
         return $this->belongsTo(User::class, 'org_id', 'id');

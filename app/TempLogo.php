@@ -14,10 +14,12 @@ class TempLogo extends Model
 
     public $table = 'temporary_logos';
 
+    protected $fillable = ['userId','image'];
+
     public function users()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    protected $fillable = ['userId','image'];
+
 }

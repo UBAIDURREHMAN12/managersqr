@@ -14,32 +14,12 @@ class CustomWeb extends Model
      */
      public $table = 'custom_web';
 
-    public function users()
-    {
-        return $this->belongsTo(User::class, 'user_id', 'id');
-    }
-
-    public function properties()
-    {
-        return $this->belongsTo(Property::class, 'property_id', 'id');
-    }
-
-    public function qrcodeInfo()
-    {
-        return $this->belongsTo(QrcodeInfo::class, 'qr_id', 'id');
-    }
-
-    public function galleries()
-    {
-        return $this->hasMany(Gallery::class, 'web_id', 'id');
-    }
-
-     protected $fillable = [
+    protected $fillable = [
         'title',
-         'user_id',
-         'company_name_or_title',
-         'property_id',
-         'qr_id',
+        'user_id',
+        'company_name_or_title',
+        'property_id',
+        'qr_id',
         'logo',
         'bg_color',
         'btn_color',
@@ -59,7 +39,27 @@ class CustomWeb extends Model
         'address',
         'latitude',
         'longitude',
-     ];
+    ];
+
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function properties()
+    {
+        return $this->belongsTo(Property::class, 'property_id', 'id');
+    }
+
+    public function qrcodeInfo()
+    {
+        return $this->belongsTo(QrcodeInfo::class, 'qr_id', 'id');
+    }
+
+    public function galleries()
+    {
+        return $this->hasMany(Gallery::class, 'web_id', 'id');
+    }
 
    protected $hidden = [
          'created_at', 'updated_at'

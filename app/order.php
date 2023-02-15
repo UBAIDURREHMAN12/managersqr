@@ -8,6 +8,9 @@ class order extends Model
 {
     protected  $table='Orders';
 
+    protected $fillable = ['order','note', 'property_id', 'room_id', 'floor_id', 'qrCode_id', 'active',
+        'area', 'user'];
+
     public function property()
     {
         return $this->belongsTo(Property::class, 'property_id', 'id');

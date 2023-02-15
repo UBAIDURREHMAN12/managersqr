@@ -11,6 +11,15 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'email', 'password','first_name','last_name'
+    ];
+
     public function carddetails()
     {
         return $this->hasOne(CardDetail::class, 'user_id', 'id');
@@ -65,15 +74,6 @@ class User extends Authenticatable
     {
         return $this->hasMany(VendorCategory::class, 'user_id', 'id');
     }
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-          'name', 'email', 'password','first_name','last_name'
-    ];
 
     /**
      * The attributes that should be hidden for arrays.

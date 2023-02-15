@@ -8,6 +8,9 @@ class FeedbackType extends Model
 {
     protected  $table='feedback_type';
 
+    protected $fillable = ['feedback', 'user_id', 'password'];
+
+
     public function users()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
