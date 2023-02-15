@@ -19,6 +19,16 @@ class CustomWeb extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
+    public function properties()
+    {
+        return $this->belongsTo(Property::class, 'property_id', 'id');
+    }
+
+    public function qrcodeInfo()
+    {
+        return $this->belongsTo(QrcodeInfo::class, 'qr_id', 'id');
+    }
+
      protected $fillable = [
         'title',
          'user_id',

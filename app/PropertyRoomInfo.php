@@ -4,9 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class order extends Model
+class PropertyRoomInfo extends Model
 {
-    protected  $table='Orders';
+    public $table = 'property_room_info';
+
+    protected $fillable = ['rooms', 'prefix', 'floorNo', 'property_id' ];
 
     public function property()
     {
