@@ -1,4 +1,4 @@
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/manager1/testmanagersqr/
+    - export DEPLOYPATH=/home5/manager1/public_html/managersqr
     - /bin/cp -R * $DEPLOYPATH
